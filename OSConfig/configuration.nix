@@ -156,6 +156,11 @@
 	  zsh
 	  cmake
     gnumake
+    libtool
+    glibc
+    pkgconfig
+    autoconf
+    automake
 	  flameshot
 	  # support both 32-bit and 64-bit applications
 	  wineWowPackages.stable
@@ -218,7 +223,8 @@
 
 	  shellAliases = {
 	  	f = "cd $(fzf --walker=dir)";
-		  update-sys = "sudo nixos-rebuild switch";
+		  # update-sys = "sudo nixos-rebuild switch";
+		  update-sys = "sudo nixos-rebuild switch --flake ~/.dotfiles/OSConfig";
 		  edit-sys = "sudo nvim /etc/nixos/configuration.nix";
 		  packettracker = "wine /home/emmanpip/.wine/drive_c/Program\ Files/Cisco\ Packet\ Tracer\ 9.0.0/bin/PacketTracer.exe";
 		  gg = "git log --all --oneline --graph";
