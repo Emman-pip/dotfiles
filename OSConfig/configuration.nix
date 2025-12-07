@@ -64,7 +64,7 @@
   services.xserver = {
 	  enable = true;
 
-	# Enable i3wm
+	  # Enable i3wm
 	  windowManager.i3 = {
 		  enable =	true;
 		  extraPackages = with pkgs; [
@@ -78,22 +78,22 @@
 
 	  };
 
-	# Configure keymap in X11
-	xkb = {
-		layout = "ph";
-		variant = "";
-	};
+	  # Configure keymap in X11
+	  xkb = {
+		  layout = "ph";
+		  variant = "";
+	  };
 
   };
   programs.i3lock.enable = true;
 
-# Enable the KDE Plasma Desktop Environment.
+  # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = false;
   services.displayManager.ly = { 
 	  enable = true;
 	  settings = {
-		animation = "matrix";
-		vi_mode = true;
+		  animation = "matrix";
+		  vi_mode = true;
 
 	  };
   };
@@ -130,7 +130,7 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       kdePackages.kate
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
@@ -144,35 +144,36 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   	neovim
-	vim
-	wget
-	curl
-	git
-	gcc
-	emacs
-	ripgrep
-	kitty
-	stow
-	zsh
-	cmake
-	flameshot
-	# support both 32-bit and 64-bit applications
-	wineWowPackages.stable
-	# wine-staging (version with experimental features)
-	# wineWowPackages.staging
-        # winetricks (all versions)
-        winetricks
-	docker
-	docker-compose
-	fzf
-	fd
-	python314
-	brightnessctl
-	nodejs
-	# install ly display manager
-	ly
-	# browser
-	librewolf
+	  vim
+	  wget
+	  curl
+	  git
+	  gcc
+	  emacs
+	  ripgrep
+	  kitty
+	  stow
+	  zsh
+	  cmake
+    gnumake
+	  flameshot
+	  # support both 32-bit and 64-bit applications
+	  wineWowPackages.stable
+	  # wine-staging (version with experimental features)
+	  # wineWowPackages.staging
+    # winetricks (all versions)
+    winetricks
+	  docker
+	  docker-compose
+	  fzf
+	  fd
+	  python314
+	  brightnessctl
+	  nodejs
+	  # install ly display manager
+	  ly
+	  # browser
+	  librewolf
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -189,22 +190,22 @@
   # services.openssh.enable = true;
 
   services.keyd = {
-	enable = true;
-	keyboards = {
-		default = {
-			ids = [ "*" ];
-			settings = {
-				main = {
-					capslock = "overload(control, esc)";
-					rightalt = "overload(control, esc)";
-				};
-			};
-		};
-	};
+	  enable = true;
+	  keyboards = {
+		  default = {
+			  ids = [ "*" ];
+			  settings = {
+				  main = {
+					  capslock = "overload(control, esc)";
+					  rightalt = "overload(control, esc)";
+				  };
+			  };
+		  };
+	  };
   };
 
   programs.git.enable = true;
-  programs.thefuck.enable = true;
+  # programs.thefuck.enable = true;
 
   # ZSH
   users.defaultUserShell = pkgs.zsh;
@@ -217,10 +218,10 @@
 
 	  shellAliases = {
 	  	f = "cd $(fzf --walker=dir)";
-		update-sys = "sudo nixos-rebuild switch";
-		edit-sys = "sudo nvim /etc/nixos/configuration.nix";
-		packettracker = "wine /home/emmanpip/.wine/drive_c/Program\ Files/Cisco\ Packet\ Tracer\ 9.0.0/bin/PacketTracer.exe";
-		gg = "git log --all --oneline --graph";
+		  update-sys = "sudo nixos-rebuild switch";
+		  edit-sys = "sudo nvim /etc/nixos/configuration.nix";
+		  packettracker = "wine /home/emmanpip/.wine/drive_c/Program\ Files/Cisco\ Packet\ Tracer\ 9.0.0/bin/PacketTracer.exe";
+		  gg = "git log --all --oneline --graph";
 	  };
 
 	  histSize = 10000;
@@ -235,7 +236,7 @@
 		  enable = true;
 		  plugins = [
 			  "git"         # also requires `programs.git.enable = true;`
-			  "thefuck"     # also requires `programs.thefuck.enable = true;` 
+			  # "thefuck"     # also requires `programs.thefuck.enable = true;` 
 		  ];
 		  theme = "amuse";
 	  };
