@@ -154,6 +154,7 @@
 	kitty
 	stow
 	zsh
+	thefuck
 	cmake
 	flameshot
 	# support both 32-bit and 64-bit applications
