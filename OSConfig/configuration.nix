@@ -204,7 +204,7 @@
   };
 
   programs.git.enable = true;
-  programs.thefuck.enable = true;
+  # programs.thefuck.enable = true;
 
   # ZSH
   users.defaultUserShell = pkgs.zsh;
