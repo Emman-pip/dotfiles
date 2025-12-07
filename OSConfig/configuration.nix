@@ -158,7 +158,6 @@
     gnumake
     libtool
     glibc
-    pkgconfig
     autoconf
     automake
 	  flameshot
