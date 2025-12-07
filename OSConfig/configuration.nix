@@ -135,7 +135,7 @@
   };
 
   # Install firefox.
-  programs.firefox.enable = true;
+  # programs.firefox.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -178,6 +178,9 @@
 	  ly
 	  # browser
 	  librewolf
+
+    # eye protection
+    redshift
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
