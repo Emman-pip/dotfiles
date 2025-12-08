@@ -181,6 +181,12 @@
 
     # eye protection
     redshift
+
+    # mouseless navigation
+    keynav
+
+    # sound
+    pulseaudio
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -249,7 +255,6 @@
 		  theme = "amuse";
 	  };
   };
-
   system.userActivationScripts.zshrc = "touch .zshrc";
 
 
