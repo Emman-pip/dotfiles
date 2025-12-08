@@ -187,7 +187,21 @@
 
     # sound
     pulseaudio
+
+    # bluetooth
+    bluez
   ];
+
+  # programs.emacs = {
+  #   enable = true;
+  #   package = pkgs.emacs;
+  #   defaultEditor = true;
+  # };
+
+  services.emacs = {
+    enable = true;
+    package = pkgs.emacs;
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
