@@ -225,4 +225,5 @@ default_border pixel 3
 bindsym $mod+p exec okular
 
 exec redshift -P -O 4000
+exec --no-startup-id keynav
 exec  exec xinput set-prop "Synaptics TM3276-022" "libinput Tapping Enabled" 1
