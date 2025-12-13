@@ -26,7 +26,7 @@
 
   hardware.trackpoint = {
 	  enable = true;
-	  speed = 255;
+	  speed = 200;
   };
 
   networking.hostName = "nixos"; # Define your hostname.
@@ -188,8 +188,8 @@
     # sound
     pulseaudio
 
-    # bluetooth
-    # bluez
+    # direnv
+    direnv
   ];
 
   hardware.bluetooth = {
