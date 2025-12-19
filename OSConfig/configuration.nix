@@ -191,6 +191,7 @@
 
     # direnv
     direnv
+    ispell
   ];
 
   hardware.bluetooth = {
