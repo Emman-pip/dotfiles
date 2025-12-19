@@ -178,6 +178,7 @@
 	  ly
 	  # browser
 	  librewolf
+    chromium
 
     # eye protection
     redshift
