@@ -192,7 +192,27 @@
     # direnv
     direnv
     ispell
+
+    # for power management
+    auto-cpufreq
   ];
+
+
+  services.power-profiles-daemon.enable = false;
+  services.auto-cpufreq = {
+    enable = true;
+    settings = {
+      battery = {
+        governor = "powersave";
+        turbo = "never";
+      };
+
+      charger = {
+        governor = "balance";
+        turbo = "auto";
+      };
+    };
+  };
 
   hardware.bluetooth = {
     enable = true;
@@ -217,6 +237,7 @@
   };
 
   services.blueman.enable = true;
+
 
   # programs.emacs = {
   #   enable = true;
