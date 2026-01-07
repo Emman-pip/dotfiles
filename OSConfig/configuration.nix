@@ -193,6 +193,9 @@
     direnv
     ispell
 
+    # tmux
+    tmux
+
     # for power management
     auto-cpufreq
   ];
