@@ -209,6 +209,10 @@
     auto-cpufreq
   ];
 
+  programs.appimage.enable = true;
+  programs.appimage.binfmt = true;
+
+
 
   services.power-profiles-daemon.enable = false;
   services.auto-cpufreq = {
