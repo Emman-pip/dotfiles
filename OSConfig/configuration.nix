@@ -38,7 +38,13 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  networking.networkmanager.enable = true;
+  # networking.networkmanager.enable = true;
+  networking.wireless.iwd = {
+    enable = true;
+    settings.Settings = {
+      AutoConnect = true;
+    };
+  };
 
   # Set your time zone.
   time.timeZone = "Asia/Manila";
@@ -195,6 +201,9 @@
 
     # tmux
     tmux
+
+    # for wifi TUI
+    impala
 
     # for power management
     auto-cpufreq
