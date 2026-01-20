@@ -207,6 +207,9 @@
 
     # for power management
     auto-cpufreq
+
+		# for file sharing
+		samba
   ];
 
   programs.appimage.enable = true;
