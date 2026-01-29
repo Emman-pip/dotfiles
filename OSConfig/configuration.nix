@@ -50,19 +50,32 @@
   time.timeZone = "Asia/Manila";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_PH.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "fil_PH";
-    LC_IDENTIFICATION = "fil_PH";
-    LC_MEASUREMENT = "fil_PH";
-    LC_MONETARY = "fil_PH";
-    LC_NAME = "fil_PH";
-    LC_NUMERIC = "fil_PH";
-    LC_PAPER = "fil_PH";
-    LC_TELEPHONE = "fil_PH";
-    LC_TIME = "fil_PH";
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    supportedLocales = [ "all" ];
+    extraLocaleSettings = {
+      LANG="en_US.UTF-8";
+      LC_ALL="en_US.UTF-8";
+    };
   };
+
+
+    # i18n.extraLocaleSettings = {
+	  #        LANGUAGE =  "en_PH.UTF-8";
+    #          LC_ALL = "C.UTF-8";
+	  #          LC_COLLATE = "en_PH.UTF-8";
+    #          LC_MESSAGES="en_PH.UTF-8";
+	  #            LC_CTYPE = "en_PH.UTF-8";
+    #          LC_ADDRESS = "fil_PH.UTF-8";
+    #          LC_IDENTIFICATION = "fil_PH.UTF-8";
+    #          LC_MEASUREMENT = "fil_PH.UTF-8";
+    #          LC_MONETARY = "fil_PH.UTF-8";
+    #          LC_NAME = "fil_PH.UTF-8";
+    #          LC_NUMERIC = "fil_PH.UTF-8";
+    #          LC_PAPER = "fil_PH.UTF-8";
+    #          LC_TELEPHONE = "fil_PH.UTF-8";
+    #          LC_TIME = "fil_PH.UTF-8";
+    #      };
 
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
