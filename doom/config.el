@@ -82,11 +82,11 @@
 
 ;; harpoon config
 (map! :n "C-SPC" 'harpoon-quick-menu-hydra)
-(map! :n "C-s" 'harpoon-add-file)
+(map! :leader "a" 'harpoon-add-file)
 
 ;; And the vanilla commands
 (map! :leader "j c" 'harpoon-clear)
-(map! :leader "j f" 'harpoon-toggle-file)
+(map! :leader "e" 'harpoon-toggle-file)
 (map! :leader "1" 'harpoon-go-to-1)
 (map! :leader "2" 'harpoon-go-to-2)
 (map! :leader "3" 'harpoon-go-to-3)
@@ -96,3 +96,11 @@
 (map! :leader "7" 'harpoon-go-to-7)
 (map! :leader "8" 'harpoon-go-to-8)
 (map! :leader "9" 'harpoon-go-to-9)
+
+;; attach to lsp to following
+(add-hook 'typescript-mode-hook 'lsp-mode)
+(add-hook 'org-mode-hook 'auto-fill-mode)
+
+
+;; hide details in dired
+(add-hook 'dired-after-readin-hook 'dired-hide-details-mode)
