@@ -161,6 +161,12 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# scratchpad
+bindsym $mod+u scratchpad show
+bindsym $mod+Shift+u move scratchpad
+
+for_window [class="kitty"] floating enable, move scratchpad, scratchpad show
+exec kitty
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -223,6 +229,7 @@ default_border pixel 3
 
 # okular shortcut
 bindsym $mod+p exec okular
+bindsym $mod+n exec kitty
 
 exec redshift -P -O 4000
 exec --no-startup-id keynav
