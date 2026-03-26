@@ -26,10 +26,11 @@
 
   hardware.trackpoint = {
 	  enable = true;
-	  speed = 200;
+	  speed = 100;
   };
 
   networking.hostName = "nixos"; # Define your hostname.
+	system.autoUpgrade.enable = true; # failing
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -46,6 +47,9 @@
     };
   };
 
+  # networking.firewall.extraStopCommands = ''
+  #   iptables -P OUTPUT ACCEPT
+  # '';
   # Set your time zone.
   time.timeZone = "Asia/Manila";
 
@@ -58,24 +62,24 @@
       LC_ALL="en_US.UTF-8";
     };
   };
+	
 
-
-    # i18n.extraLocaleSettings = {
-	  #        LANGUAGE =  "en_PH.UTF-8";
-    #          LC_ALL = "C.UTF-8";
-	  #          LC_COLLATE = "en_PH.UTF-8";
-    #          LC_MESSAGES="en_PH.UTF-8";
-	  #            LC_CTYPE = "en_PH.UTF-8";
-    #          LC_ADDRESS = "fil_PH.UTF-8";
-    #          LC_IDENTIFICATION = "fil_PH.UTF-8";
-    #          LC_MEASUREMENT = "fil_PH.UTF-8";
-    #          LC_MONETARY = "fil_PH.UTF-8";
-    #          LC_NAME = "fil_PH.UTF-8";
-    #          LC_NUMERIC = "fil_PH.UTF-8";
-    #          LC_PAPER = "fil_PH.UTF-8";
-    #          LC_TELEPHONE = "fil_PH.UTF-8";
-    #          LC_TIME = "fil_PH.UTF-8";
-    #      };
+  # i18n.extraLocaleSettings = {
+	#        LANGUAGE =  "en_PH.UTF-8";
+  #          LC_ALL = "C.UTF-8";
+	#          LC_COLLATE = "en_PH.UTF-8";
+  #          LC_MESSAGES="en_PH.UTF-8";
+	#            LC_CTYPE = "en_PH.UTF-8";
+  #          LC_ADDRESS = "fil_PH.UTF-8";
+  #          LC_IDENTIFICATION = "fil_PH.UTF-8";
+  #          LC_MEASUREMENT = "fil_PH.UTF-8";
+  #          LC_MONETARY = "fil_PH.UTF-8";
+  #          LC_NAME = "fil_PH.UTF-8";
+  #          LC_NUMERIC = "fil_PH.UTF-8";
+  #          LC_PAPER = "fil_PH.UTF-8";
+  #          LC_TELEPHONE = "fil_PH.UTF-8";
+  #          LC_TIME = "fil_PH.UTF-8";
+  #      };
 
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
@@ -143,15 +147,36 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
+
+	# users.groups.libvirtd = {
+	# 	# members = ["emmanpip"];
+	# 	enable = true;
+	# };
+
+	users.groups = {
+		libvirtd = {
+			members = [ "emmanpip" ];
+		};
+	};
+
+	virtualisation = { 
+		libvirtd.enable = true;
+		docker.enable = true;
+		virtualbox.host.enable = true;
+	};
+	programs.virt-manager.enable = true;
+	virtualisation.spiceUSBRedirection.enable = true;
+
   users.users.emmanpip = {
     isNormalUser = true;
     description = "Emman-pip";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
     packages = with pkgs; [
       kdePackages.kate
       #  thunderbird
     ];
   };
+
 
   # Install firefox.
   # programs.firefox.enable = true;
@@ -179,7 +204,6 @@
     glibc
     autoconf
     automake
-	  flameshot
 	  # support both 32-bit and 64-bit applications
 	  wineWowPackages.stable
 	  # wine-staging (version with experimental features)
@@ -223,6 +247,32 @@
 
 		# for file sharing
 		samba
+
+    # for screenshots
+    xclip
+    maim
+
+		# for python environment
+		pyenv
+
+    # for converting to other file formats
+    pandoc
+
+    # for office work
+    libreoffice
+
+    # for ambient sount
+    blanket
+
+    # java
+    javaPackages.compiler.openjdk25
+
+    brave
+		gdb
+		openvpn
+		update-systemd-resolved
+
+		clementine
   ];
 
   programs.appimage.enable = true;
@@ -317,6 +367,7 @@
 				  main = {
 					  capslock = "overload(control, esc)";
 					  rightalt = "overload(control, esc)";
+					  leftalt = "overload(alt, enter)";
 				  };
 			  };
 		  };
@@ -373,6 +424,11 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+  networking.useDHCP = true;
+  # networking.firewall = {
+  #   enable = true;
+  #   allowedTCPPorts = [ 8081 ];
+  # };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
