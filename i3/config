@@ -230,7 +230,13 @@ default_border pixel 3
 # okular shortcut
 bindsym $mod+p exec okular
 bindsym $mod+n exec kitty
+bindsym $mod+Shift+s exec --no-startup-id "maim -s | xclip -selection clipboard -t image/png"
 
 exec redshift -P -O 4000
 exec --no-startup-id keynav
 exec  exec xinput set-prop "Synaptics TM3276-022" "libinput Tapping Enabled" 1
+
+# assign workspace
+assign [class="(?i)brave-browser"] $ws10
+
+exec-once --no-startup-id brave

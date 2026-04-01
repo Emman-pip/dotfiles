@@ -101,6 +101,9 @@
 (add-hook 'typescript-mode-hook 'lsp-mode)
 (add-hook 'org-mode-hook 'auto-fill-mode)
 
+;; company
+(after! company
+  (setq company-idle-delay 0))
 
-;; hide details in dired
-(add-hook 'dired-after-readin-hook 'dired-hide-details-mode)
+
+(setq org-agenda-files '("~/org/personal.org" "~/org/projects.org"))

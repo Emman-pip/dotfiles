@@ -243,7 +243,7 @@
     impala
 
     # for power management
-    auto-cpufreq
+    # auto-cpufreq
 
 		# for file sharing
 		samba
@@ -276,25 +276,37 @@
   ];
 
   programs.appimage.enable = true;
-  programs.appimage.binfmt = true;
+	programs.appimage.binfmt = true;
 
 
+	services.power-profiles-daemon.enable = false;
+	services.tlp = {
+		enable = true;
+		settings = {
+			CPU_SCALING_GOVERNOR_ON_AC = "performance";
+			CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
 
-  services.power-profiles-daemon.enable = false;
-  services.auto-cpufreq = {
-    enable = true;
-    settings = {
-      battery = {
-        governor = "powersave";
-        turbo = "never";
-      };
+			CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+			CPU_ENERGY_PERF_POLICY_ON_AC = "performance"; # can be changed to power for power conservation
 
-      charger = {
-        governor = "balance";
-        turbo = "auto";
-      };
-    };
-  };
+			CPU_MIN_PERF_ON_AC = 50;
+			CPU_MAX_PERF_ON_AC = 100;
+			CPU_MIN_PERF_ON_BAT = 0;
+			CPU_MAX_PERF_ON_BAT = 20;  # can be changed to 20 for power conservation
+
+#Optional helps save long term battery health
+			START_CHARGE_THRESH_BAT0 = 40; # 40 and below it starts to charge
+			STOP_CHARGE_THRESH_BAT0 = 80; # 80 and above it stops charging
+
+
+			START_CHARGE_THRESH_BAT1 = 40; # 40 and below it starts to charge
+			STOP_CHARGE_THRESH_BAT1 = 80; # 80 and above it stops charging
+
+			TLP_DEFAULT_MODE = "BAT";
+      TLP_PERSISTENT_DEFAULT = 1;
+
+		};
+	};
 
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
@@ -425,10 +437,10 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
   networking.useDHCP = true;
-  # networking.firewall = {
-  #   enable = true;
-  #   allowedTCPPorts = [ 8081 ];
-  # };
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 8000 ];
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
