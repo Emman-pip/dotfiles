@@ -18,6 +18,7 @@ vim.opt.cursorline = true
 vim.opt.virtualedit = "block"
 vim.opt.backupcopy = "yes"
 vim.opt.mouse = ""
-vim.cmd(":colorscheme vim")
+vim.opt.clipboard = "unnamedplus"
+-- vim.cmd(":colorscheme vim")
 
 -- theme
