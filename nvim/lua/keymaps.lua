@@ -1,2 +1,5 @@
 vim.keymap.set('n', '<leader>bk', ":bdelete<CR>", { desc = 'Delete buffer'})
 vim.keymap.set('n', '<leader>e', ':Explore<CR>', { desc = 'Open netrw'})
+vim.keymap.set('n', '<leader>k', ':lua vim.diagnostic.open_float()<CR>', { desc = 'Open diagnostic'})
+vim.keymap.set('n', '<M-n>', ':lua vim.diagnostic.goto_next()<CR>', { desc = 'Go to next diagnostic'})
+vim.keymap.set('n', '<M-p>', ':lua vim.diagnostic.goto_prev()<CR>', { desc = 'Go to prev diagnostic'})
