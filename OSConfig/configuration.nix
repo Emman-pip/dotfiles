@@ -215,6 +215,7 @@
 	  fzf
 	  fd
 	  python314
+		pyright
 	  brightnessctl
 	  nodejs
 	  # install ly display manager
@@ -273,7 +274,18 @@
 		update-systemd-resolved
 
 		clementine
-  ];
+		lazygit
+		webkitgtk_4_1
+		gtk3
+		glib
+		libsoup_3
+
+
+		typescript-language-server
+		black
+		prettierd
+		
+  ];		
 
   programs.appimage.enable = true;
 	programs.appimage.binfmt = true;
@@ -291,6 +303,8 @@
 
 			CPU_MIN_PERF_ON_AC = 50;
 			CPU_MAX_PERF_ON_AC = 100;
+			CPU_BOOST_ON_AC = 1;
+			CPU_HWP_DYN_BOOST_ON_AC=1;
 			CPU_MIN_PERF_ON_BAT = 0;
 			CPU_MAX_PERF_ON_BAT = 20;  # can be changed to 20 for power conservation
 
@@ -318,6 +332,10 @@
     openssl
     curl
     expat
+		webkitgtk_4_1
+		gtk3
+		glib
+		libsoup_3
     # Add other common libraries if needed
   ];
 
